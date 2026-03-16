@@ -1,25 +1,60 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Veritas AI - Fake News Classifier</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-</head>
-<body>
-  <main class="container">
-    <h1>Veritas AI Fake News Classifier</h1>
-    <p class="subtitle">Paste a news article and get an instant REAL or FAKE prediction.</p>
+{% extends "base.html" %}
 
-    <label for="newsText" class="label">News Article Text</label>
-    <textarea id="newsText" rows="12" placeholder="Paste article content here..."></textarea>
+{% block title %}Veritas AI | The Digital Truth Shield{% endblock %}
 
-    <button id="predictBtn" type="button">Predict</button>
+{% block content %}
+<section class="mx-auto grid max-w-7xl gap-10 px-6 pb-20 pt-16 md:grid-cols-2 md:pt-24">
+  <div class="space-y-6">
+    <p class="inline-block rounded-full border border-cyberBlue/40 bg-cyberBlue/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyberBlue">Long-Context Detection Engine</p>
+    <h1 class="text-4xl font-black leading-tight sm:text-5xl">The Digital Truth Shield.</h1>
+    <p class="max-w-xl text-lg text-slate-300">Verify long-form articles, out-of-context images, and breaking news instantly using Longformer Deep Learning and real-time evidence cross-checking.</p>
+    <div class="flex flex-wrap gap-3">
+      <a href="{{ url_for('verify_page') }}" class="scan-btn inline-flex rounded-xl px-6 py-3 text-sm font-bold text-white">Start Verifying</a>
+      <a href="{{ url_for('live_feed_page') }}" class="inline-flex rounded-xl border border-slate-700 bg-slate-900 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyberBlue/70">See Live Feed</a>
+    </div>
+  </div>
 
-    <div id="status" class="status" aria-live="polite"></div>
-    <div id="result" class="result" aria-live="polite"></div>
-  </main>
+  <div class="glass relative overflow-hidden rounded-3xl p-6 shadow-neon">
+    <div class="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-cyberPurple/20 blur-3xl"></div>
+    <div class="absolute -left-20 -bottom-20 h-56 w-56 rounded-full bg-cyberBlue/20 blur-3xl"></div>
+    <div class="relative space-y-4">
+      <p class="text-sm uppercase tracking-[.2em] text-slate-400">Threat Monitoring Snapshot</p>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-slate-700 bg-slate-900/80 p-4">
+          <p class="text-xs text-slate-400">Claims Processed</p>
+          <p class="mt-2 text-2xl font-bold text-cyberBlue">1.2M+</p>
+        </div>
+        <div class="rounded-2xl border border-slate-700 bg-slate-900/80 p-4">
+          <p class="text-xs text-slate-400">Avg Scan Time</p>
+          <p class="mt-2 text-2xl font-bold text-cyberPurple">1.8s</p>
+        </div>
+        <div class="rounded-2xl border border-slate-700 bg-slate-900/80 p-4">
+          <p class="text-xs text-slate-400">Context Window</p>
+          <p class="mt-2 text-2xl font-bold text-neonGreen">4096</p>
+        </div>
+        <div class="rounded-2xl border border-slate-700 bg-slate-900/80 p-4">
+          <p class="text-xs text-slate-400">Trust Signal</p>
+          <p class="mt-2 text-2xl font-bold text-slate-100">Live</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
-</html>
+<section class="mx-auto max-w-7xl px-6 pb-20">
+  <div class="grid gap-6 md:grid-cols-3">
+    <a href="{{ url_for('verify_page') }}" class="glass rounded-2xl p-6 transition hover:border-cyberBlue/50 hover:shadow-neon">
+      <h2 class="text-xl font-bold">Verification Dashboard</h2>
+      <p class="mt-2 text-sm text-slate-300">Run deep-text scans and inspect confidence outputs in an interactive workspace.</p>
+    </a>
+    <a href="{{ url_for('live_feed_page') }}" class="glass rounded-2xl p-6 transition hover:border-cyberPurple/50 hover:shadow-neon">
+      <h2 class="text-xl font-bold">Live Bluff Feed</h2>
+      <p class="mt-2 text-sm text-slate-300">Track claim status snapshots with source signals and verification context.</p>
+    </a>
+    <a href="{{ url_for('problem_page') }}" class="glass rounded-2xl p-6 transition hover:border-neonGreen/50 hover:shadow-neon">
+      <h2 class="text-xl font-bold">The Problem and Market</h2>
+      <p class="mt-2 text-sm text-slate-300">Understand why context truncation breaks trust and how long-context AI fixes it.</p>
+    </a>
+  </div>
+</section>
+{% endblock %}

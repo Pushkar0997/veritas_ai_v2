@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Veritas AI | Live Feed{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-7xl px-6 pb-20 pt-16">
+  <div class="mb-8">
+    <p class="inline-block rounded-full border border-cyberPurple/40 bg-cyberPurple/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyberPurple">Real-Time Activity</p>
+    <h1 class="mt-4 text-4xl font-black sm:text-5xl">Live Bluff Feed</h1>
+    <p class="mt-4 max-w-3xl text-slate-300">This board simulates recent verification traffic and showcases how confidence and source context can be tracked continuously.</p>
+  </div>
+
+  <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+    <article class="feed-card rounded-2xl border border-neonGreen/60 bg-slate-900/85 p-5 shadow-[0_0_25px_rgba(74,222,128,.16)]">
+      <p class="text-xs uppercase tracking-widest text-slate-400">Source: Twitter · 2m ago</p>
+      <h3 class="mt-2 font-semibold">Claim: New tax laws announced for 2026.</h3>
+      <p class="mt-4 text-sm font-bold text-neonGreen">Veritas Score: 92% LIKELY REAL</p>
+      <p class="mt-3 text-sm text-slate-300">Corroborated by budget ministry circular and two independent policy desks.</p>
+    </article>
+
+    <article class="feed-card rounded-2xl border border-neonRed/60 bg-slate-900/85 p-5 shadow-[0_0_25px_rgba(244,63,94,.16)]">
+      <p class="text-xs uppercase tracking-widest text-slate-400">Source: WhatsApp Forward · 9m ago</p>
+      <h3 class="mt-2 font-semibold">Claim: AI robots taking over construction sites in Dubai.</h3>
+      <p class="mt-4 text-sm font-bold text-neonRed">Veritas Score: 98% FAKE</p>
+      <p class="mt-3 text-sm text-slate-300">Image frame matched to promotional sci-fi footage from 2021.</p>
+    </article>
+
+    <article class="feed-card rounded-2xl border border-neonGreen/60 bg-slate-900/85 p-5 shadow-[0_0_25px_rgba(74,222,128,.16)]">
+      <p class="text-xs uppercase tracking-widest text-slate-400">Source: Local Newswire · 14m ago</p>
+      <h3 class="mt-2 font-semibold">Claim: City launches open-data flood alert platform.</h3>
+      <p class="mt-4 text-sm font-bold text-neonGreen">Veritas Score: 88% LIKELY REAL</p>
+      <p class="mt-3 text-sm text-slate-300">Event metadata aligns with official municipal release and GIS portal records.</p>
+    </article>
+
+    <article class="feed-card rounded-2xl border border-neonRed/60 bg-slate-900/85 p-5 shadow-[0_0_25px_rgba(244,63,94,.16)]">
+      <p class="text-xs uppercase tracking-widest text-slate-400">Source: Edited Clip · 21m ago</p>
+      <h3 class="mt-2 font-semibold">Claim: Minister confirms cash ban in 48 hours.</h3>
+      <p class="mt-4 text-sm font-bold text-neonRed">Veritas Score: 94% FAKE</p>
+      <p class="mt-3 text-sm text-slate-300">Audio track was clipped and sentence boundaries were rearranged.</p>
+    </article>
+
+    <article class="feed-card rounded-2xl border border-neonGreen/60 bg-slate-900/85 p-5 shadow-[0_0_25px_rgba(74,222,128,.16)]">
+      <p class="text-xs uppercase tracking-widest text-slate-400">Source: Reuters-style Desk · 31m ago</p>
+      <h3 class="mt-2 font-semibold">Claim: National rail corridor phase two approved.</h3>
+      <p class="mt-4 text-sm font-bold text-neonGreen">Veritas Score: 84% LIKELY REAL</p>
+      <p class="mt-3 text-sm text-slate-300">Minutes from planning committee and budget annex support this claim.</p>
+    </article>
+
+    <article class="feed-card rounded-2xl border border-neonRed/60 bg-slate-900/85 p-5 shadow-[0_0_25px_rgba(244,63,94,.16)]">
+      <p class="text-xs uppercase tracking-widest text-slate-400">Source: Viral Reel · 43m ago</p>
+      <h3 class="mt-2 font-semibold">Claim: Space agency detected alien beacon over city skyline.</h3>
+      <p class="mt-4 text-sm font-bold text-neonRed">Veritas Score: 99% FAKE</p>
+      <p class="mt-3 text-sm text-slate-300">Frame-by-frame analysis identifies CGI overlays and recycled VFX assets.</p>
+    </article>
+  </div>
+</section>
+{% endblock %}

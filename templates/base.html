@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Veritas AI{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyberBlue: "#22d3ee",
+            cyberPurple: "#8b5cf6",
+            neonGreen: "#4ade80",
+            neonRed: "#f43f5e"
+          },
+          boxShadow: {
+            neon: "0 0 0 1px rgba(34,211,238,.35), 0 0 40px rgba(139,92,246,.22)",
+            card: "0 12px 45px rgba(0,0,0,.5)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background:
+        radial-gradient(circle at 12% 10%, rgba(34, 211, 238, 0.16), transparent 30%),
+        radial-gradient(circle at 80% 16%, rgba(139, 92, 246, 0.16), transparent 28%),
+        radial-gradient(circle at 50% 85%, rgba(20, 184, 166, 0.08), transparent 40%),
+        #020617;
+    }
+
+    .glass {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .scan-btn {
+      background: linear-gradient(120deg, #22d3ee 0%, #8b5cf6 100%);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .scan-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(34, 211, 238, 0.25);
+    }
+
+    .truth-gauge {
+      --score: 0;
+      width: 180px;
+      height: 180px;
+      border-radius: 9999px;
+      background: conic-gradient(#22d3ee calc(var(--score) * 1%), #8b5cf6 calc(var(--score) * 1%), #0f172a 0);
+      position: relative;
+      animation: glowPulse 2.4s ease-in-out infinite;
+    }
+
+    .truth-gauge::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 9999px;
+      background: #020617;
+      border: 1px solid rgba(148, 163, 184, .35);
+    }
+
+    .spinner {
+      width: 44px;
+      height: 44px;
+      border: 4px solid rgba(148, 163, 184, .28);
+      border-top-color: #22d3ee;
+      border-radius: 9999px;
+      animation: spin .9s linear infinite;
+    }
+
+    .feed-card {
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .feed-card:hover {
+      transform: translateY(-4px);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 16px rgba(34, 211, 238, .22); }
+      50% { box-shadow: 0 0 28px rgba(139, 92, 246, .32); }
+    }
+  </style>
+  {% block head_extra %}{% endblock %}
+</head>
+<body class="text-slate-100 antialiased">
+  <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur">
+    <nav class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+      <a href="{{ url_for('index') }}" class="text-xl font-bold tracking-wide">
+        <span class="bg-gradient-to-r from-cyberBlue to-cyberPurple bg-clip-text text-transparent">Veritas AI</span>
+      </a>
+      <div class="hidden items-center gap-7 text-sm font-medium md:flex">
+        <a href="{{ url_for('verify_page') }}" class="text-slate-300 transition hover:text-cyberBlue">Verify Now</a>
+        <a href="{{ url_for('live_feed_page') }}" class="text-slate-300 transition hover:text-cyberBlue">Live Feed</a>
+        <a href="{{ url_for('problem_page') }}" class="text-slate-300 transition hover:text-cyberBlue">The Problem</a>
+        <a href="{{ url_for('mission_page') }}" class="text-slate-300 transition hover:text-cyberBlue">Our Mission</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-950/90">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="text-xl font-bold">Veritas AI</p>
+        <p class="mt-2 text-sm text-slate-400">Automated Long-Context Fake News and Misinformation Detection System.</p>
+      </div>
+      <div class="text-sm text-slate-300">
+        <p><span class="font-semibold text-slate-100">Team:</span> Pushkar, Aditi, Kavita, Sumanth</p>
+        <p class="mt-1"><span class="font-semibold text-slate-100">Tech Stack:</span> PyTorch, Hugging Face, FastAPI, Gemini Vision</p>
+      </div>
+    </div>
+  </footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

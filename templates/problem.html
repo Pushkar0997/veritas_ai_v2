@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Veritas AI | The Problem{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-7xl px-6 pb-20 pt-16">
+  <div class="mb-8 max-w-4xl">
+    <p class="inline-block rounded-full border border-neonRed/40 bg-neonRed/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-neonRed">Market and Problem Statement</p>
+    <h1 class="mt-4 text-4xl font-black sm:text-5xl">Misinformation Moves Faster Than Manual Verification.</h1>
+    <p class="mt-4 text-slate-300">Digital ecosystems reward speed, not depth. Most users decide trust in seconds, while traditional fact-checking can take hours or days.</p>
+  </div>
+
+  <div class="grid gap-8 rounded-3xl border border-slate-800 bg-slate-900/75 p-8 md:grid-cols-3">
+    <div class="rounded-2xl border border-cyberPurple/30 bg-slate-950/70 p-5">
+      <p class="text-sm text-slate-400">Behavior Insight</p>
+      <p class="mt-3 text-4xl font-black text-cyberPurple">80%</p>
+      <p class="mt-2 text-sm text-slate-300">of digital users only read the headline before sharing.</p>
+    </div>
+    <div class="rounded-2xl border border-cyberBlue/30 bg-slate-950/70 p-5">
+      <p class="text-sm text-slate-400">Workflow Pain</p>
+      <p class="mt-3 text-4xl font-black text-cyberBlue">75%</p>
+      <p class="mt-2 text-sm text-slate-300">say manual verification takes too much time.</p>
+    </div>
+    <div class="rounded-2xl border border-neonGreen/30 bg-slate-950/70 p-5">
+      <p class="text-sm text-slate-400">Context Gap</p>
+      <p class="mt-3 text-4xl font-black text-neonGreen">4096</p>
+      <p class="mt-2 text-sm text-slate-300">tokens processed by Veritas AI to reduce context truncation errors.</p>
+    </div>
+  </div>
+
+  <div class="mt-10 grid gap-6 md:grid-cols-2">
+    <article class="glass rounded-2xl p-6">
+      <h2 class="text-2xl font-bold">Why Standard Pipelines Fail</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-300">Short-context classifiers often miss narrative drift, timeline contradictions, and quote splicing. They may label an article using isolated fragments instead of complete context windows.</p>
+      <p class="mt-3 text-sm leading-relaxed text-slate-300">Veritas AI addresses this by preserving long-range dependencies in token attention, allowing one inference pass to inspect linked claims and evidence across paragraphs.</p>
+    </article>
+
+    <article class="glass rounded-2xl p-6">
+      <h2 class="text-2xl font-bold">Where This Matters Most</h2>
+      <ul class="mt-3 space-y-2 text-sm text-slate-300">
+        <li>Election cycles and policy announcements with rapidly edited narratives.</li>
+        <li>Health and safety misinformation where delayed correction has real harm.</li>
+        <li>Manipulated media clips spread without source provenance.</li>
+        <li>Corporate rumor cascades that impact markets and public confidence.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+{% endblock %}

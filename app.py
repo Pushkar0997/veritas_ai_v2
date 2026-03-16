@@ -44,6 +44,26 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/verify", methods=["GET"])
+def verify_page():
+    return render_template("verify.html")
+
+
+@app.route("/live-feed", methods=["GET"])
+def live_feed_page():
+    return render_template("live_feed.html")
+
+
+@app.route("/the-problem", methods=["GET"])
+def problem_page():
+    return render_template("problem.html")
+
+
+@app.route("/our-mission", methods=["GET"])
+def mission_page():
+    return render_template("mission.html")
+
+
 @app.route("/health", methods=["GET"])
 def health():
     if model_load_error:

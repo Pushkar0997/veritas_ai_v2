@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Veritas AI | Verify Now{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-7xl px-6 pb-14 pt-16">
+  <div class="mb-10 grid gap-8 md:grid-cols-2 md:items-end">
+    <div>
+      <p class="inline-block rounded-full border border-cyberBlue/40 bg-cyberBlue/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyberBlue">Verification Command Center</p>
+      <h1 class="mt-4 text-4xl font-black leading-tight sm:text-5xl">Scan Long-Form News With Full Context.</h1>
+      <p class="mt-4 max-w-xl text-slate-300">Veritas AI analyzes deep narrative structure, inconsistency patterns, and credibility signals across long text windows before assigning a verdict.</p>
+    </div>
+    <div class="glass rounded-2xl p-5">
+      <p class="text-xs uppercase tracking-widest text-slate-400">Performance Snapshot</p>
+      <div class="mt-4 grid grid-cols-3 gap-3 text-center">
+        <div class="rounded-xl border border-slate-700 bg-slate-900/80 p-3">
+          <p class="text-xs text-slate-400">Avg Latency</p>
+          <p class="mt-1 text-xl font-bold text-cyberBlue">1.8s</p>
+        </div>
+        <div class="rounded-xl border border-slate-700 bg-slate-900/80 p-3">
+          <p class="text-xs text-slate-400">Token Window</p>
+          <p class="mt-1 text-xl font-bold text-cyberPurple">4096</p>
+        </div>
+        <div class="rounded-xl border border-slate-700 bg-slate-900/80 p-3">
+          <p class="text-xs text-slate-400">Model Family</p>
+          <p class="mt-1 text-xl font-bold text-neonGreen">Longformer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass rounded-3xl p-6 shadow-card md:p-8">
+    <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+      <h2 class="text-2xl font-bold">Verification Dashboard</h2>
+      <p class="text-sm text-slate-400">Text mode is fully supported. URL mode currently forwards the URL string.</p>
+    </div>
+
+    <div class="mb-4 flex gap-2">
+      <button id="tabText" class="rounded-lg border border-cyberBlue/40 bg-cyberBlue/20 px-4 py-2 text-sm font-semibold text-cyberBlue">Paste Text</button>
+      <button id="tabUrl" class="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-semibold text-slate-300">Enter URL</button>
+    </div>
+
+    <form id="verifyForm" class="space-y-4">
+      <div id="textInputWrap">
+        <label for="newsText" class="mb-2 block text-sm text-slate-300">Article content</label>
+        <textarea id="newsText" rows="9" class="w-full rounded-xl border border-slate-700 bg-slate-950/80 p-4 text-sm text-slate-100 outline-none ring-cyberBlue transition focus:ring" placeholder="Paste full article text here..."></textarea>
+      </div>
+
+      <div id="urlInputWrap" class="hidden">
+        <label for="newsUrl" class="mb-2 block text-sm text-slate-300">Article URL</label>
+        <input id="newsUrl" type="url" class="w-full rounded-xl border border-slate-700 bg-slate-950/80 p-4 text-sm text-slate-100 outline-none ring-cyberBlue transition focus:ring" placeholder="https://example.com/news-article" />
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button id="scanBtn" type="submit" class="scan-btn rounded-xl px-6 py-3 text-sm font-bold text-white">Scan Now</button>
+        <p id="statusText" class="text-sm text-slate-400" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <div id="resultContainer" class="mt-8 hidden rounded-2xl border border-slate-700 bg-slate-950/70 p-6">
+      <div id="loadingState" class="flex items-center gap-3">
+        <div class="spinner"></div>
+        <p class="text-sm text-slate-300">Analyzing context, evidence, and credibility signals...</p>
+      </div>
+
+      <div id="resultState" class="hidden">
+        <div class="grid gap-8 md:grid-cols-[220px,1fr]">
+          <div class="flex flex-col items-center justify-center">
+            <div id="truthGauge" class="truth-gauge"></div>
+            <div class="-mt-28 text-center">
+              <p id="truthScoreText" class="text-3xl font-black text-white">0%</p>
+              <p id="truthLabel" class="text-sm font-semibold uppercase tracking-widest text-cyberBlue">Pending</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold">Model Explanation</h3>
+            <p id="modelExplanation" class="mt-2 text-sm leading-relaxed text-slate-300">Explanation will appear after scanning.</p>
+            <div id="probabilityLine" class="mt-4 text-sm text-slate-400"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}
