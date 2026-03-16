@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veritas AI - Fake News Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="container">
+    <h1>Veritas AI Fake News Classifier</h1>
+    <p class="subtitle">Paste a news article and get an instant REAL or FAKE prediction.</p>
+
+    <label for="newsText" class="label">News Article Text</label>
+    <textarea id="newsText" rows="12" placeholder="Paste article content here..."></textarea>
+
+    <button id="predictBtn" type="button">Predict</button>
+
+    <div id="status" class="status" aria-live="polite"></div>
+    <div id="result" class="result" aria-live="polite"></div>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
