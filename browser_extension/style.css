@@ -1,0 +1,32 @@
+#veritas-scorer-container {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2147483647;
+  font-family: Arial, sans-serif;
+}
+
+#veritas-scorer-container #veritas-score-btn {
+  background: #0b5fff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+#veritas-scorer-container #veritas-score-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+#veritas-scorer-container #veritas-result {
+  margin-top: 6px;
+  background: rgba(255,255,255,0.95);
+  color: #111;
+  padding: 8px 10px;
+  border-radius: 6px;
+  max-width: 320px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}

@@ -1,0 +1,60 @@
+name: Extension Validation
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'browser_extension/**'
+      - '.github/workflows/extension-ci.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'browser_extension/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: browser_extension
+        run: npm install
+
+      - name: Run tests
+        working-directory: browser_extension
+        run: npm test
+
+      - name: Run linter
+        working-directory: browser_extension
+        run: npm run lint
+
+      - name: Generate icons
+        working-directory: browser_extension
+        run: npm run generate-icons
+
+      - name: Validate manifest
+        working-directory: browser_extension
+        run: |
+          if ! jq empty manifest.json 2>/dev/null; then
+            echo "manifest.json is not valid JSON"
+            exit 1
+          fi
+          echo "✓ manifest.json is valid"
+
+      - name: Check file structure
+        working-directory: browser_extension
+        run: |
+          required_files=("manifest.json" "background.js" "content_script.js" "options.html" "options.js" "style.css" "README.md")
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "Missing required file: $file"
+              exit 1
+            fi
+          done
+          echo "✓ All required files present"

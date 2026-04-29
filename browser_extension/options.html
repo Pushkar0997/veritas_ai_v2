@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VeritasAI Scorer — Options</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    h1 { color: #0b5fff; margin-bottom: 10px; font-size: 24px; }
+    .subtitle { color: #666; margin-bottom: 30px; font-size: 14px; }
+    .field-group { margin-bottom: 24px; }
+    label { display: block; font-weight: 600; margin-bottom: 8px; color: #333; }
+    input[type="text"],
+    input[type="checkbox"] { padding: 8px; font-size: 14px; }
+    input[type="text"] { width: 100%; border: 1px solid #ddd; border-radius: 4px; }
+    input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+    .checkbox-label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .hint { font-size: 12px; color: #999; margin-top: 4px; }
+    .button-group { display: flex; gap: 12px; margin-top: 30px; }
+    button {
+      flex: 1;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    #save {
+      background: #0b5fff;
+      color: white;
+    }
+    #save:hover { background: #0a4fd6; }
+    #reset {
+      background: #f0f0f0;
+      color: #333;
+    }
+    #reset:hover { background: #e0e0e0; }
+    .status { font-size: 12px; margin-top: 8px; padding: 8px; border-radius: 4px; display: none; }
+    .status.success { background: #d4edda; color: #155724; display: block; }
+    .status.error { background: #f8d7da; color: #721c24; display: block; }
+    .divider { border-top: 1px solid #eee; margin: 24px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>VeritasAI Scorer</h1>
+    <p class="subtitle">Configure your scoring endpoints and preferences.</p>
+
+    <div class="field-group">
+      <label for="hf-urls">Hugging Face Endpoints (one per line)</label>
+      <textarea id="hf-urls" rows="4" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;font-family:monospace;font-size:12px;"></textarea>
+      <p class="hint">Default: veritas-ai-v2.hf.space API and backup URLs. Use Gradio /api/predict endpoints.</p>
+    </div>
+
+    <div class="field-group">
+      <label for="local-url">Local Backend Endpoint</label>
+      <input type="text" id="local-url" placeholder="http://localhost:5000/predict">
+      <p class="hint">Fallback URL when HF endpoints are unavailable.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field-group">
+      <label class="checkbox-label">
+        <input type="checkbox" id="prefer-hf">
+        <span>Prefer Hugging Face (try HF first, then local)</span>
+      </label>
+      <p class="hint">If unchecked, local endpoint is tried first.</p>
+    </div>
+
+    <div class="button-group">
+      <button id="save">Save Settings</button>
+      <button id="reset">Reset to Default</button>
+    </div>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

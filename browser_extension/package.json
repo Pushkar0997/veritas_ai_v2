@@ -1,0 +1,18 @@
+{
+  "name": "veritas-ai-scorer-extension",
+  "version": "0.1.0",
+  "description": "Chrome extension for scoring web pages with VeritasAI model",
+  "scripts": {
+    "generate-icons": "node generate-icons.js",
+    "test": "node tests/test.js",
+    "lint": "node tests/lint.js",
+    "validate": "npm run lint && npm run test"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  },
+  "optionalDependencies": {},
+  "keywords": ["chrome-extension", "veritas", "misinformation", "detection"],
+  "author": "Pushkar Kumar",
+  "license": "MIT"
+}
